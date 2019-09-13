@@ -11,7 +11,7 @@ include_once '../DTO/Products.php';
 
 
 
-function getAll(){
+function getAll1(){
     $dao = new ProductsDAO();
     $resultGetAll = $dao->getAll();
     foreach ($resultGetAll as $item){

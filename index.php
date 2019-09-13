@@ -8,4 +8,4 @@
 
 include_once './Controller/ProductsLogic.php';
 
-$resultGetAll = getAll();
+$resultGetAll = getAll1();
