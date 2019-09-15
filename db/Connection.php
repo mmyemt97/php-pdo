@@ -20,7 +20,7 @@ class Connection
 
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-            echo "Kết nối thành công";
+//            echo "Kết nối thành công";
             return $conn;
 
         }catch (PDOException $e){
@@ -30,6 +30,7 @@ class Connection
 
     function disconnect(){
         $conn = null;
+
 
         return $conn;
     }

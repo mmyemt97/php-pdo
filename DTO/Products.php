@@ -10,7 +10,7 @@ class Products
 {
     private $maSanPham;
     private $tenSanPham;
-    private $hang;
+    private $idhangsanxuat;
     private $dongSanPham;
     private $mau;
     private $gia;
@@ -36,11 +36,11 @@ class Products
      * @param $boNho
      * @param $hinhAnh
      */
-    public function __construct($maSanPham, $tenSanPham, $hang, $dongSanPham, $mau, $gia, $soLuong, $camTruoc, $camSau, $dungLuongPin, $boNho, $hinhAnh)
+    public function __construct($maSanPham, $tenSanPham, $idhangsanxuat, $dongSanPham, $mau, $gia, $soLuong, $camTruoc, $camSau, $dungLuongPin, $boNho, $hinhAnh)
     {
         $this->maSanPham = $maSanPham;
         $this->tenSanPham = $tenSanPham;
-        $this->hang = $hang;
+        $this->idhangsanxuat = $idhangsanxuat;
         $this->dongSanPham = $dongSanPham;
         $this->mau = $mau;
         $this->gia = $gia;
@@ -87,18 +87,19 @@ class Products
     /**
      * @return mixed
      */
-    public function getHang()
+    public function getIdhangsanxuat()
     {
-        return $this->hang;
+        return $this->idhangsanxuat;
     }
 
     /**
-     * @param mixed $hang
+     * @param mixed $idhangsanxuat
      */
-    public function setHang($hang)
+    public function setIdhangsanxuat($idhangsanxuat)
     {
-        $this->hang = $hang;
+        $this->idhangsanxuat = $idhangsanxuat;
     }
+
 
     /**
      * @return mixed
