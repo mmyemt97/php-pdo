@@ -16,15 +16,26 @@ class Connection
 
     function connect(){
         try{
+
             $conn = new PDO("mysql:host=$this->host; dbname=$this->db; $this->charset", $this->user, $this->password);
 
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
+            //            Start Transaction
+//            $conn->beginTransaction();
+
 //            echo "Kết nối thành công";
             return $conn;
 
+
+            //Commit here
+//            $conn->commit();
+
         }catch (PDOException $e){
             echo "Kết nối thất bại: ".$e->getMessage();
+
+            //Rollback
+//            $conn->rollBack();
         }
     }
 
@@ -48,4 +59,25 @@ class Connection
 
         return $result;
     }
+
+    //
+
+    function execNonQuery($query){
+        try{
+            $conn = $this->connect() or die('Không thể kết nối đến DataProviderMain');
+
+            $conn->beginTransaction();
+            $result = $conn->prepare($query);
+
+            $result->execute();
+
+            $conn->commit();
+        }
+        catch (PDOException $e){
+            $conn->rollBack();
+            throw new PDOException($e->getMessage());
+        }
+    }
+
+
 }
