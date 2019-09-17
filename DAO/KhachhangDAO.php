@@ -35,5 +35,37 @@ class KhachhangDAO extends Connection
         }
     }
 
+    function Login(Khachhang $kh){
+        try{
+            $conn = $this->connect();
+            $query = "SELECT username FROM khachhang WHERE 1 = 1 "
+                    ." AND username = ? AND password = ?";
 
+            $stmt = $conn->prepare($query);
+            $stmt->bindParam(1, $kh->getUsername(), PDO::PARAM_STR, 255);
+            $stmt->bindParam(2, $kh->getPassword(), PDO::PARAM_STR, 255);
+            $stmt->execute();
+
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+
+            foreach ($stmt as $item){
+                $username = $item['username'];
+                $user = new Khachhang(0, $username, '');
+            }
+
+            return $user;
+        }
+        catch (PDOException $e){
+           error_log("Error: ".$e->getMessage());
+        }
+    }
+
+    function checkDuplicate(Khachhang $kh){
+        try{
+
+        }
+        catch (PDOException $e){
+            error_log("Error: ".$e->getMessage());
+        }
+    }
 }
