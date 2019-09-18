@@ -79,5 +79,9 @@ class Connection
         }
     }
 
+    function getPDOObjecT(){
+        $pdo = $this->connect();
+        return $pdo;
+    }
 
 }
